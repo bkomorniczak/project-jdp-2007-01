@@ -11,12 +11,15 @@
 .springBeans
 .sts4-cache
 
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
 /out/
+.circleci
+/specs/
 
 ### NetBeans ###
 /nbproject/private/
