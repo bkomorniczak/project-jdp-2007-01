@@ -8,33 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/v1/product")
+@RequestMapping("/v1/cart")
 public class CartController {
 
     @PostMapping(value = "createCart")
     public void createCart(@RequestBody CartDto cartDto){}
 
-    @GetMapping(value = "getCart")
-    public List<CartItemDto> getCart(@RequestParam Long cartId) throws CartNotFoundException{
-        return new ArrayList<>();
-    }
-
-    @GetMapping
-    public List<CartItemDto> getProducts(@RequestParam Long productId) throws CartNotFoundException{
+    @GetMapping(value = "getProducts")
+    public List<CartItemDto> getProducts(@RequestParam Long productId) throws CartNotFoundException, ProductNotFoundException{
         return new ArrayList<>();
     }
 
     @PutMapping(value = "addProduct")
-    public void addProduct(@RequestParam Long productId) throws ProductNotFoundException{
+    public void addProduct(@RequestParam Long productId) throws ProductNotFoundException{}
 
-    }
-
-
-    @DeleteMapping(value = "deleteProduct")
-    public void deleteProduct(@RequestParam Long productId) throws ProductNotFoundException{}
+    @DeleteMapping(value = "deleteProductFromCart")
+    public void deleteProductFromCart(@RequestParam Long productId) throws ProductNotFoundException{}
 
     @PutMapping(value = "createOrder")
-    public void createOrder(@RequestParam Long cartId) throws CartNotFoundException{
-
-    }
+    public void createOrder(@RequestParam Long cartId) throws CartNotFoundException{}
 }
