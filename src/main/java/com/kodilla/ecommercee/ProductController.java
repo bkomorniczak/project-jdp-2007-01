@@ -15,20 +15,20 @@ public class ProductController {
         return new ArrayList<>();
     }
 
-    @GetMapping
+    @GetMapping(value = "getProduct")
     public  ProductDto getProduct(@RequestParam Long productId) {
         return new  ProductDto();
     }
 
 
-    @DeleteMapping
+    @DeleteMapping(value = "deleteProduct")
     public void delete(@RequestParam Long productId) {}
 
-    @PutMapping
-    public ProductDto updateProduct(@RequestBody Long productId) {
-        return new ProductDto();
+    @PutMapping(value = "updateProduct")
+    public void updateProduct(@RequestParam ProductDto productDto) {
+
     }
 
-    @PostMapping
+    @PostMapping(value = "createProduct")
     public void createProduct(@RequestBody ProductDto productDto) {}
 }
