@@ -20,5 +20,4 @@ public class UserController {
         Random random = new Random();
         return random.nextInt(10);
     }
-
 }
