@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Random;
 
 @RestController
-@RequestMapping("/v1/user")
+@RequestMapping("/v1/order")
 public class UserController {
 
     @PostMapping
     public void createUser (@RequestBody UserDto userDto) {    }
 
-    @PostMapping
-    public void blockUserId (@RequestParam int userId){}
+    @PutMapping
+    public void blockUserId (@RequestParam long userId){}
 
-    @PostMapping
+   @GetMapping
     public int generateToken (@RequestBody UserDto userDto) {
         Random random = new Random();
         return random.nextInt(10);
