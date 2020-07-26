@@ -3,10 +3,7 @@ package com.kodilla.ecommercee.domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -30,9 +27,21 @@ public class User {
     @Column(name = "USERKEY")
     private Long userKey;
 
+    /*@OneToMany(
+            targetEntity = Cart.class,
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<Cart> carts;*/
+
     public User(String username, int status, Long userKey) {
         this.username = username;
         this.status = status;
         this.userKey = userKey;
     }
+
+    /*public List<Cart> addCartToUser(Cart cart) {
+         return carts.add(cart);
+    }*/
 }
