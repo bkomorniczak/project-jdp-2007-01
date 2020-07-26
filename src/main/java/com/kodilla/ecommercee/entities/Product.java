@@ -3,13 +3,16 @@ package com.kodilla.ecommercee.entities;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "product")
+@Entity
+@Table(name = "PRODUCT")
 public class Product {
 
     @Id
@@ -25,6 +28,7 @@ public class Product {
     @Column(name = "PRICE", nullable = false)
     private double price;
 
-    @Column(name = "GROUPID")
-    private String groupId;
+//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "GROUP_ID")
+//    private Group group;
 }
