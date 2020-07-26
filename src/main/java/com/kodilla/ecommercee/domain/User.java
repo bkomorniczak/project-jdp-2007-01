@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 
 @Getter
 @NoArgsConstructor
@@ -39,6 +40,7 @@ public class User {
         this.username = username;
         this.status = status;
         this.userKey = userKey;
+        /*this.carts = new ArrayList<>();*/
     }
 
     /*public List<Cart> addCartToUser(Cart cart) {
