@@ -33,10 +33,10 @@ public class Product {
 //    private Group group;
 
 //    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "ORDERE_ID")
-//    private Order order;
-//
-//        @ManyToOne(optional = false, cascade = CascadeType.ALL)
 //    @JoinColumn(name = "ORDER_ID")
-//    private Group group;
+//    private Order order;
+
+//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "CART_ID")
+//    private Cart cart;
 }
