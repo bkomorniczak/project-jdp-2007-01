@@ -31,4 +31,12 @@ public class Product {
 //    @ManyToOne(optional = false, cascade = CascadeType.ALL)
 //    @JoinColumn(name = "GROUP_ID")
 //    private Group group;
+
+//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "ORDER_ID")
+//    private Order order;
+
+//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "CART_ID")
+//    private Cart cart;
 }
