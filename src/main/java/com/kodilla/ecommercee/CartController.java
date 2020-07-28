@@ -15,7 +15,7 @@ public class CartController {
     public void createCart(@RequestBody CartDto cartDto){}
 
     @GetMapping(value = "getProducts")
-    public List<CartItemDto> getProducts(@RequestParam Long productId) throws CartNotFoundException, ProductNotFoundException{
+    public List<CartItemDto> getProducts(@RequestParam Long cartId) throws CartNotFoundException, ProductNotFoundException{
         return new ArrayList<>();
     }
 
