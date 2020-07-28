@@ -32,11 +32,19 @@ public class Product {
 //    @JoinColumn(name = "GROUP_ID")
 //    private Group group;
 
-//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "ORDER_ID")
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "PRODUCTS_ORDERS",
+//            joinColumns = { @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")},
+//            inverseJoinColumns = { @JoinColumn(name = "ORDER_ID", referencedColumnName = "ORDER_ID")}
+//    )
 //    private Order order;
 
-//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "CART_ID")
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(
+//            name = "PRODUCTS_CARDS",
+//            joinColumns = { @JoinColumn(name = "PRODUCT_ID", referencedColumnName = "PRODUCT_ID")},
+//            inverseJoinColumns = { @JoinColumn(name = "CARD_ID", referencedColumnName = "CARD_ID")}
+//    )
 //    private Cart cart;
 }
