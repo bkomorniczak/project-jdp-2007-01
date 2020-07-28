@@ -26,7 +26,7 @@ public class GroupController {
     }
 
     @PutMapping
-    public GroupDto updateGroup(@RequestBody Long groupId) {
+    public GroupDto updateGroup(@RequestBody GroupDto groupDto) {
         return new GroupDto();
     }
 
