@@ -8,7 +8,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,11 +20,15 @@ public class Order {
     @Column
     private Long id;
 
-    @NotNull
-    @Column(name = "NAME")
-    private String name;
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    private User user;*/
 
-    @NotNull
-    @Column(name = "QUANTITY")
-    private int quantity;
+
+   /* @OneToMany(
+            targetEntity = OrderedProducts.class,
+            mappedBy = "order",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    private List<OrderedProducts> orderedProducts;*/
 }
