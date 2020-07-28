@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @NoArgsConstructor
-@Entity(name = "GROUP")
+@Entity(name = "PRODUCT_GROUP")
 public class Group {
 
     @Id
