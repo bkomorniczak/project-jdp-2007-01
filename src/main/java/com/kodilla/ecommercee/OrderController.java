@@ -3,7 +3,6 @@ package com.kodilla.ecommercee;
 import com.kodilla.ecommercee.dto.OrderDto;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class OrderController {
     }
 
     @PutMapping(value = "updateOrder")
-    public void updateOrder(@RequestBody Group groupId) {
+    public void updateOrder(@RequestBody OrderDto orderDto) {
 
     }
 }
