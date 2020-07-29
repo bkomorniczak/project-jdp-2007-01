@@ -35,7 +35,7 @@ public class OrderController {
     }
 
     @PutMapping(value = "updateOrder")
-    public void updateOrder(@RequestBody Group groupId) {
+    public void updateOrder(@RequestBody OrderDto orderDto) {
 
     }
 }
