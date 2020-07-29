@@ -20,10 +20,10 @@ public class CartController {
     }
 
     @PutMapping(value = "addProduct")
-    public void addProduct(@RequestParam Long productId) throws ProductNotFoundException{}
+    public void addProduct(@RequestParam Long productId, Long cartId) throws ProductNotFoundException, CartNotFoundException{}
 
     @DeleteMapping(value = "deleteProductFromCart")
-    public void deleteProductFromCart(@RequestParam Long productId) throws ProductNotFoundException{}
+    public void deleteProductFromCart(@RequestParam Long productId, Long cartId) throws ProductNotFoundException, CartNotFoundException{}
 
     @PutMapping(value = "createOrder")
     public void createOrder(@RequestParam Long cartId) throws CartNotFoundException{}
