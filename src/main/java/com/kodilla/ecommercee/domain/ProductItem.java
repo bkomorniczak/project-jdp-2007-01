@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Entity(name = "ORDERED_PRODUCTS")
-public class OrderedProducts {
+public class ProductItem {
 
     @Id
     @GeneratedValue

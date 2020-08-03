@@ -25,10 +25,10 @@ public class Order {
 
 
    /* @OneToMany(
-            targetEntity = OrderedProducts.class,
+            targetEntity = ProductItem.class,
             mappedBy = "order",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<OrderedProducts> orderedProducts;*/
+    private List<ProductItem> ProductItems;*/
 }
