@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -20,40 +21,36 @@ public class Cart {
     @Column (name = "ID", unique = true)
     private Long id;
 
-    @Column (name = "NAME")
-    private String name;
-
     @Column (name = "DESCRIPTION")
     private String description;
 
     @Column (name = "PRICE")
     private int price;
 
-    @Column (name = "GROUPID")
-    private int groupID;
 
-    public Cart(String name, String description, int price, int groupId) {
-        this.name = name;
+    public Cart(String description, int price) {
         this.description = description;
         this.price = price;
-        this.groupID = groupId;
-        //this.product = new ArrayList<>();
+        //this.productItem = new ArrayList<>();
     }
 
-    /*@OneToOne(fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
+/*    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private User user;*/
 
-/*    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "PRODUCTS_CARDS")
-    private List<Product> product;*/
+/*    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "ORDER_ID")
+    private Order order;*/
 
-/*    public List<Product> addProductToCart (Product product) {
-        return product.add(Product);
+/*    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "PRODUCTS_CARDS")
+    private List<ProductItem> productItem;*/
+
+/*    public List<ProductItem> addProductToCart (ProductItem productItem) {
+        return product.add(ProductItem);
     }*/
 
-/*    public List<Product> removeProductToCart (Product product) {
-        return product.remove(Product);
+/*    public List<ProductItem> removeProductToCart (ProductItem productItem) {
+        return product.remove(ProductItem);
     }*/
 
 }
