@@ -24,16 +24,6 @@ public class Cart {
     @Column (name = "DESCRIPTION")
     private String description;
 
-    @Column (name = "PRICE")
-    private int price;
-
-
-    public Cart(String description, int price) {
-        this.description = description;
-        this.price = price;
-        //this.productItem = new ArrayList<>();
-    }
-
 /*    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private User user;*/
@@ -44,6 +34,11 @@ public class Cart {
 
 /*    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "PRODUCTS_CARDS")
     private List<ProductItem> productItem;*/
+
+    public Cart(String description) {
+        this.description = description;
+        //this.productItem = new ArrayList<>();
+    }
 
 /*    public List<ProductItem> addProductToCart (ProductItem productItem) {
         return product.add(ProductItem);
