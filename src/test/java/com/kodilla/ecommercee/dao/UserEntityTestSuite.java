@@ -36,11 +36,11 @@ public class UserEntityTestSuite {
         assertTrue(readUser.isPresent());
 
         //CleanUp
-        //userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
     @Test
-    public void testUserFindById() {
+    public void testUserFindAll() {
         //Given
         User user = new User(NAME, 1, 1L);
         userRepository.save(user);
@@ -52,6 +52,6 @@ public class UserEntityTestSuite {
         assertEquals(1, readUsers.size());
 
         //CleanUp
-        //userRepository.deleteAll();
+        userRepository.deleteAll();
     }
 }
