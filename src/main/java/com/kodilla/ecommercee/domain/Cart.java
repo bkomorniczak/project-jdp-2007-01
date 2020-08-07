@@ -7,26 +7,26 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Entity (name = "CART")
+@Entity(name = "CART")
 public class Cart {
 
     @Id
     @NotNull
-    @Column (name = "ID", unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ID", unique = true)
     private Long id;
 
-    @Column (name = "DESCRIPTION")
+    @Column(name = "DESCRIPTION")
     private String description;
 
-/*    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
-    private User user;*/
+    private User user;
 
 /*    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "ORDER_ID")
