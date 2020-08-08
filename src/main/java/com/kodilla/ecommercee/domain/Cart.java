@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -24,16 +25,18 @@ public class Cart {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    private BigDecimal price;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
     private User user;
 
-/*    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "ORDER_ID")
-    private Order order;*/
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name = "ORDER_ID")
+//    private Order order;
 
-/*    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "PRODUCTS_CARDS")
-    private List<ProductItem> productItem;*/
+//    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "PRODUCTS_CARTS")
+//    private List<ProductItem> productItem;
 
     public Cart(String description) {
         this.description = description;
