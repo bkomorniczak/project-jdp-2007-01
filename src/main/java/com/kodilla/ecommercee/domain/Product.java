@@ -28,9 +28,9 @@ public class Product {
     @Column(name = "PRICE", nullable = false)
     private double price;
 
-//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-//    @JoinColumn(name = "GROUP_ID")
-//    private Group group;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "GROUP_ID")
+    private Group group;
 
 //    @ManyToMany(cascade = CascadeType.ALL)
 //    @JoinTable(
