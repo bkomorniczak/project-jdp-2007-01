@@ -24,11 +24,7 @@ public class ProductItem {
     @Column
     private int quantity;
 
-    /*@ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORDER",referencedColumnName = "Id")
-    private Order order;
+    /*
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn
