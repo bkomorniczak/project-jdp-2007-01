@@ -24,10 +24,11 @@ public class ProductItem {
     @Column
     private int quantity;
 
-    /*
-
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn
-    private Product product;*/
+    private Product product;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Order order;
 
 }
