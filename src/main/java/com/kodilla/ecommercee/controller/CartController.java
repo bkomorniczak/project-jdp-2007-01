@@ -1,5 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.domain.Cart;
+import com.kodilla.ecommercee.domain.ProductItem;
 import com.kodilla.ecommercee.exception.CartNotFoundException;
 import com.kodilla.ecommercee.exception.ProductNotFoundException;
 import com.kodilla.ecommercee.dto.CartDto;
@@ -26,16 +28,23 @@ public class CartController {
     }
 
     @GetMapping(value = "getProducts")
-    public List<CartItemDto> getProducts(@RequestParam Long cartId) throws CartNotFoundException, ProductNotFoundException {
-        return new ArrayList<>();
+    public List<ProductItem> getProducts(@RequestParam Long cartId)  {
+        return cartService.getProductItems(cartId);
     }
 
     @PutMapping(value = "addProduct")
-    public void addProduct(@RequestParam Long productId, @RequestParam Long cartId) throws ProductNotFoundException, CartNotFoundException{}
+    public void addProduct(@RequestParam Long cartId, @RequestParam Long productId) {
+        cartService.getProductItems(cartId).add(cartService.getProductId(productId));
+
+    }
 
     @DeleteMapping(value = "deleteProductFromCart")
-    public void deleteProductFromCart(@RequestParam Long productId, @RequestParam Long cartId) throws ProductNotFoundException, CartNotFoundException{}
+    public void deleteProductFromCart(@RequestParam Long cartId, @RequestParam Long productId) {
+        cartService.getProductItems(cartId).remove(cartService.getProductId(productId));
+    }
 
     @PutMapping(value = "createOrder")
-    public void createOrder(@RequestParam Long cartId) throws CartNotFoundException{}
+    public void createOrder(@RequestParam Long cartId){
+        cartService.createOrder(cartId);
+    }
 }

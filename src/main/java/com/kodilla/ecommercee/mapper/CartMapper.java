@@ -11,9 +11,9 @@ public class CartMapper {
                 cartDto.getId(),
                 cartDto.getDescription(),
                 cartDto.getPrice(),
-                cartDto.getUser()
-//                cartDto.getOrder(),
-//                cartDto.getProductItems()
+                cartDto.getUser(),
+                cartDto.getOrder(),
+                cartDto.getProductItems()
         );
     }
 
@@ -22,9 +22,9 @@ public class CartMapper {
                 cart.getId(),
                 cart.getDescription(),
                 cart.getPrice(),
-                cart.getUser()
-//                cart.getOrder(),
-//                cart.getProductItem()
+                cart.getUser(),
+                cart.getOrder(),
+                cart.getProductItems()
         );
     }
 }
