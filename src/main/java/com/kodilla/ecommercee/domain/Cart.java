@@ -47,13 +47,13 @@ public class Cart {
         this.productItems = new ArrayList<>();
     }
 
-/*    public List<ProductItem> addProductToCart (ProductItem productItem) {
-        return product.add(ProductItem);
-    }*/
+    public boolean addProductToCart (ProductItem productItem) {
+        return productItems.add(productItem);
+    }
 
-/*    public List<ProductItem> removeProductToCart (ProductItem productItem) {
-        return product.remove(ProductItem);
-    }*/
+    public boolean removeProductToCart (ProductItem productItem) {
+        return productItems.remove(productItem);
+    }
 
 }
 
