@@ -21,7 +21,6 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-
     @OneToMany(
             targetEntity = ProductItem.class,
             mappedBy = "order",
@@ -29,4 +28,5 @@ public class Order {
             fetch = FetchType.LAZY
     )
     private List<ProductItem> productItems;
+
 }

@@ -13,4 +13,5 @@ public interface ProductItemRepository extends JpaRepository<ProductItem, Long> 
 
     @Override
     Optional<ProductItem> findById(Long aLong);
+
 }

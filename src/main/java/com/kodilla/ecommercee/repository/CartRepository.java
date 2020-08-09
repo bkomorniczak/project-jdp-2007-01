@@ -8,10 +8,10 @@ import java.util.Optional;
 
 @Repository
 public interface CartRepository extends JpaRepository <Cart, Long> {
-
     @Override
     Cart save(Cart cart);
 
     @Override
     Optional<Cart> findById(Long id);
+
 }
