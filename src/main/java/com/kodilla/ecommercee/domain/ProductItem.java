@@ -31,4 +31,7 @@ public class ProductItem {
     @ManyToOne(fetch = FetchType.LAZY)
     private Order order;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Cart cart;
+
 }
