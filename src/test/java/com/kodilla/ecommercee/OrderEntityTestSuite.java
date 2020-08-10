@@ -1,66 +1,45 @@
 package com.kodilla.ecommercee;
 
+import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.dto.OrderDto;
+import com.kodilla.ecommercee.repository.OrderRepository;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Assert;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class OrderEntityTestSuite {
 
     @Autowired
-    private OrderDto orderDto;
-    private OrderDto order1;
-    private OrderDto order2;
+    private OrderRepository orderRepository;
+    private Order order1 = new Order();
+    private Order order2 = new Order();
 
     @Test
-    public void getOrdersTest() {
+    public void findAllOrderTest() {
         //Given
-        List<OrderDto> orderDtos = new ArrayList<>();
-        orderDtos.add(order1);
-        orderDtos.add(order2);
+        orderRepository.save(order1);
+        orderRepository.save(order2);
         //When
         //Then
-        Assert.assertEquals(order1, orderDtos.get(1));
+        Assert.assertEquals(2, orderRepository.findAll().size());
+        //CleanUp
+        orderRepository.deleteAll();
     }
 
     @Test
-    public void deleteOrderTest() {
+    public void deleteAllOrderTest() {
         //Given
-        List<OrderDto> orderDtos = new ArrayList<>();
-        orderDtos.add(order1);
-        orderDtos.add(order2);
+        orderRepository.save(order1);
+        orderRepository.save(order2);
         //When
-        orderDtos.remove(1);
+        orderRepository.deleteAll();
         //Then
-        Assert.assertEquals(1, orderDtos.size());
-    }
-
-    @Test
-    public void createOrderTest() {
-        //Given
-        List<OrderDto> orderDtos = new ArrayList<>();
-        orderDtos.add(order1);
-        orderDtos.add(order2);
-        //When
-        OrderDto order3 = new OrderDto();
-        orderDtos.add(order3);
-        //Then
-        Assert.assertEquals(3, orderDtos.size());
-    }
-
-    @Test
-    public void updateOrder() {
-        //Given
-        List<OrderDto> orderDtos = new ArrayList<>();
-        orderDtos.add(order1);
-        orderDtos.add(order2);
-        //When
-        OrderDto order15 = new OrderDto();
-        orderDtos.set(1,order15);
-        //Then
-        Assert.assertEquals(order15, orderDtos.get(1));
+        Assert.assertEquals(0, orderRepository.findAll().size());
     }
 
 }
