@@ -21,13 +21,11 @@ public class OrderController {
     @GetMapping(value = "getOrders")
     public List<OrderDto> getOrders() {
         return mapper.mapToOrderDtoList(service.getAllOrders());
-
     }
 
     @GetMapping(value = "getOrder")
     public OrderDto getOrder(@RequestParam Long orderId) {
         return mapper.mapToOrderDto(service.getOrderById(orderId).orElseThrow(null));
-
     }
 
     @DeleteMapping(value = "deleteOrder")
@@ -38,7 +36,6 @@ public class OrderController {
     @PostMapping(value = "createOrder")
     public OrderDto createOrder(@RequestBody OrderDto orderDto) {
         return mapper.mapToOrderDto(service.saveToDatabase(mapper.mapToOrder(orderDto)));
-
     }
 
     @PutMapping(value = "updateOrder")
