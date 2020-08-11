@@ -1,6 +1,7 @@
 package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.OrderDto;
+import com.kodilla.ecommercee.exception.OrderNotFoundException;
 import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.service.OrderDbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,8 @@ public class OrderController {
     }
 
     @GetMapping(value = "getOrder")
-    public OrderDto getOrder(@RequestParam Long orderId) {
-        return mapper.mapToOrderDto(service.getOrderById(orderId).orElseThrow(null));
+    public OrderDto getOrder(@RequestParam Long orderId) throws OrderNotFoundException{
+        return mapper.mapToOrderDto(service.getOrderById(orderId).orElseThrow(OrderNotFoundException::new));
     }
 
     @DeleteMapping(value = "deleteOrder")
