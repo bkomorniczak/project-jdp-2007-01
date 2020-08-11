@@ -14,24 +14,29 @@ public class OrderMapper {
     @Autowired
     private UserMapper userMapper;
 
+    @Autowired
+    private ProductItemMapper productItemMapper;
+
     public OrderDto mapToOrderDto(Order order) {
         return new OrderDto(
                 order.getId(),
                 userMapper.mapToUserDto(order.getUser()),
-                order.getProductItems());
+                productItemMapper.mapToProductItemDtoList(order.getProductItems()));
     }
 
     public Order mapToOrder(OrderDto orderDto) {
         return new Order(
                 orderDto.getId(),
                 userMapper.mapToUser(orderDto.getUserDto()),
-                orderDto.getProductItems());
+                productItemMapper.mapToProductItemList(orderDto.getProductItems()));
     }
 
     public List<OrderDto> mapToOrderDtoList(List<Order> orderList) {
         return orderList.stream()
                 .map(order ->
-                        new OrderDto(order.getId(), userMapper.mapToUserDto(order.getUser()), order.getProductItems()))
+                        new OrderDto(order.getId(),
+                                userMapper.mapToUserDto(order.getUser()),
+                                productItemMapper.mapToProductItemDtoList(order.getProductItems())))
                 .collect(Collectors.toList());
     }
 }
