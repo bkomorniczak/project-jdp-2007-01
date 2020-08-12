@@ -31,12 +31,12 @@ public class CartService {
         return cartRepository.findById(cartId).orElse(null);
     }
 
-    public List<ProductItem> getProductItems( final Long cartId) {
-        return cartRepository.findById(cartId).orElse(null).getProductItems();
+    public Cart getProductItems( final Long cartId) {
+        return cartRepository.findById(cartId).orElse(null);
 
     }
 
-    public ProductItem getProductId(final Long productItemId) {
+    public ProductItem getProductById(final Long productItemId) {
         return productItemRepository.findById(productItemId).orElse(null);
 
     }

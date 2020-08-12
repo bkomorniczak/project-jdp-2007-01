@@ -34,4 +34,8 @@ public class ProductItem {
     @ManyToOne(fetch = FetchType.EAGER)
     private Cart cart;
 
+    public ProductItem(Long id, int quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
 }

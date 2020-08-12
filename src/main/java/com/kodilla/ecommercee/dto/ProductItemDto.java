@@ -4,13 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderDto {
+public class ProductItemDto {
     private Long id;
-    private Long userId;
-    private List<ProductItemDto> productDtoList;
+    private int quantity;
+
 }
