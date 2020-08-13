@@ -11,7 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 public class OrderDto {
     private Long id;
-    private UserDto userDto;
-    private List<ProductItemDto> productItems;
+    private Long userId;
+    private List<Long> productItemsId;
 
 }

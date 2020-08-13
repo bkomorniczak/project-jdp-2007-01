@@ -2,6 +2,7 @@ package com.kodilla.ecommercee.controller;
 
 import com.kodilla.ecommercee.dto.OrderDto;
 import com.kodilla.ecommercee.exception.OrderNotFoundException;
+import com.kodilla.ecommercee.exception.UserNotFoundException;
 import com.kodilla.ecommercee.mapper.OrderMapper;
 import com.kodilla.ecommercee.service.OrderDbService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,12 +36,12 @@ public class OrderController {
     }
 
     @PostMapping(value = "createOrder")
-    public OrderDto createOrder(@RequestBody OrderDto orderDto) {
+    public OrderDto createOrder(@RequestBody OrderDto orderDto) throws UserNotFoundException {
         return mapper.mapToOrderDto(service.saveToDatabase(mapper.mapToOrder(orderDto)));
     }
 
     @PutMapping(value = "updateOrder")
-    public void updateOrder(@RequestBody OrderDto orderDto) {
+    public void updateOrder(@RequestBody OrderDto orderDto) throws UserNotFoundException{
         service.saveToDatabase(mapper.mapToOrder(orderDto));
     }
 }
