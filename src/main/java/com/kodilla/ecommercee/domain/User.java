@@ -1,5 +1,6 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "USERS")
 public class User {
 
@@ -40,7 +42,7 @@ public class User {
     @Column(name = "PASSWORD")
     private String password;
 
-/*    @OneToMany(
+    @OneToMany(
             targetEntity = Cart.class,
             mappedBy = "user",
             cascade = CascadeType.ALL,
@@ -54,14 +56,16 @@ public class User {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    private List<Order> orders;*/
+    private List<Order> orders;
 
-    public User(String userName, String status, Long userKey) {
+    public User(String userName,String userEmail, String userPassword, String status, Long userKey) {
         this.userName = userName;
         this.status = status;
         this.userKey = userKey;
-//        this.carts = new ArrayList<>();
-//        this.orders = new ArrayList<>();
+        this.email = userEmail;
+        this.password = userPassword;
+        this.carts = new ArrayList<>();
+        this.orders = new ArrayList<>();
     }
 
 /*    public List<Cart> addCartToUser(Cart cart) {

@@ -21,11 +21,14 @@ public class UserEntityTestSuite {
     @Autowired
     private UserRepository userRepository;
     private static final String NAME = "TestUser";
+    private static final String STATUS = "Active";
+    private static final String PASSWORD = "password";
+    private static final String EMAIL = "email";
 
     @Test
     public void testUserSave() {
         //Given
-        User user = new User(NAME, 1, 1111L);
+        User user = new User(NAME, STATUS, PASSWORD,EMAIL, 1111L);
 
         //When
         userRepository.save(user);
@@ -42,7 +45,7 @@ public class UserEntityTestSuite {
     @Test
     public void testUserFindAll() {
         //Given
-        User user = new User(NAME, 1, 1L);
+        User user = new User(NAME, STATUS, PASSWORD,EMAIL, 1111L);
         userRepository.save(user);
 
         //When
