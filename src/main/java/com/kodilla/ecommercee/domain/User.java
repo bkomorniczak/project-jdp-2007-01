@@ -68,7 +68,7 @@ public class User {
         this.orders = new ArrayList<>();
     }
 
-/*    public List<Cart> addCartToUser(Cart cart) {
+    public boolean addCartToUser(Cart cart) {
          return carts.add(cart);
-    }*/
+    }
 }
