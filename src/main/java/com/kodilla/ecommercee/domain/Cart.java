@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
@@ -47,7 +48,7 @@ public class Cart {
 
     public Cart(String description) {
         this.description = description;
-       // this.productItems = new ArrayList<>();
+        this.productItems = new ArrayList<>();
     }
 
     public boolean addProductToCart (ProductItem productItem) {
@@ -59,4 +60,3 @@ public class Cart {
     }
 
 }
-

@@ -16,8 +16,8 @@ public class CartDto {
     private Long id;
     private String description;
     private BigDecimal price;
-    private Long userDto;
-    private Long orderDto;
+    private Long UserId;
+    private Long orderId;
     private List<ProductDto> productDtoList;
 
 }

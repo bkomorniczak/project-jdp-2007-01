@@ -19,16 +19,14 @@ public class CartMapper {
     private UserRepository userRepository;
     @Autowired
     private  OrderRepository orderRepository;
-    @Autowired
-    private GroupRepository groupRepository;
 
     public Cart mapToCart(CartDto cartDto) {
         return new Cart(
                 cartDto.getId(),
                 cartDto.getDescription(),
                 cartDto.getPrice(),
-                userRepository.findById(cartDto.getUserDto()).orElse(null),
-                orderRepository.findById(cartDto.getOrderDto()).orElse(null),
+                userRepository.findById(cartDto.getUserId()).orElse(null),
+                orderRepository.findById(cartDto.getOrderId()).orElse(null),
                 new ArrayList<>()
         );
     }
@@ -53,25 +51,5 @@ public class CartMapper {
                         product.getProduct().getPrice(),
                         product.getProduct().getGroup().getId()))
                 .collect(Collectors.toList());
-    }
-    public List<ProductItemDto> mapToProductItemDtoList(List<ProductItem> productItems) {
-        return productItems.stream()
-                .map(productItem -> new ProductItemDto(productItem.getId(), productItem.getQuantity()))
-                .collect(Collectors.toList());
-    }
-
-
-    public List<ProductItem> mapToProductItemList(List<ProductItemDto> productItemDtoList) {
-        return productItemDtoList.stream()
-                .map(productItemDto -> new ProductItem(productItemDto.getId(), productItemDto.getQuantity()))
-                .collect(Collectors.toList());
-    }
-
-    public OrderDto mapToOrderDto( Order order) {
-        return new OrderDto(
-                order.getId(),
-                order.getUser().getId(),
-                mapToProductItemDtoList(order.getProductItems())
-        );
     }
 }

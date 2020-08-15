@@ -3,6 +3,7 @@ package com.kodilla.ecommercee.service;
 import com.kodilla.ecommercee.domain.Cart;
 import com.kodilla.ecommercee.domain.Order;
 import com.kodilla.ecommercee.domain.ProductItem;
+import com.kodilla.ecommercee.exception.CartNotFoundException;
 import com.kodilla.ecommercee.repository.CartRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
 import com.kodilla.ecommercee.repository.ProductItemRepository;
@@ -26,8 +27,8 @@ public class CartService {
 
     }
 
-    public Cart getCartById(final Long cartId) {
-        return cartRepository.findById(cartId).orElse(null);
+    public Optional<Cart> getCartById(final Long cartId) {
+        return cartRepository.findById(cartId);
     }
 
     public List<ProductItem> getProductItems(final Long cartId) {
@@ -39,8 +40,8 @@ public class CartService {
         return productItemRepository.findById(productItemId);
     }
 
-    public Order createOrder(final Long cartId) {
-        return orderRepository.save(getCartById(cartId).getOrder());
+    public Order createOrder(final Long cartId) throws CartNotFoundException {
+        return orderRepository.save(getCartById(cartId).orElseThrow(CartNotFoundException::new).getOrder());
     }
 
 }
