@@ -1,17 +1,14 @@
 package com.kodilla.ecommercee.controller;
 
+import com.kodilla.ecommercee.UseCases.SetNewTokenForUserUseCase;
 import com.kodilla.ecommercee.domain.User;
 import com.kodilla.ecommercee.dto.UserDto;
 import com.kodilla.ecommercee.dto.UserExpiryTokenDto;
 import com.kodilla.ecommercee.mapper.UserMapper;
-import com.kodilla.ecommercee.repository.UserRepository;
 import com.kodilla.ecommercee.service.UserDbService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
@@ -20,14 +17,15 @@ import java.util.Random;
 @RequestMapping("/v1/user")
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
 
     @Autowired
     private UserMapper userMapper;
 
     @Autowired
     private UserDbService userDbService;
+
+    @Autowired
+    private SetNewTokenForUserUseCase setNewTokenForUserUseCase;
 
     @PostMapping(value = "createUser")
     public UserDto createUser (@RequestBody UserDto userDto) {
@@ -44,11 +42,8 @@ public class UserController {
 
     @GetMapping(value = "generateToken")
     public UserExpiryTokenDto generateToken (@RequestBody UserDto userDto) {
-        Random random = new Random();
-        UserExpiryTokenDto userExpiryTokenDto = new UserExpiryTokenDto();
-        userExpiryTokenDto.setKey(random.nextLong());
-        userExpiryTokenDto.setExpiryDate(LocalDateTime.now().plusHours(1));
-        return userExpiryTokenDto;
+        return setNewTokenForUserUseCase.userExpiryTokenDto(userDto);
+
    }
 
 }

@@ -18,4 +18,5 @@ public class CartDto {
     private BigDecimal price;
     private String groupId;
     private List<CartItem> cartItemList;
+
 }
