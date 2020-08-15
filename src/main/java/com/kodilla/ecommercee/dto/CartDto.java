@@ -18,6 +18,6 @@ public class CartDto {
     private BigDecimal price;
     private Long userDto;
     private Long orderDto;
-    private List<ProductItemDto> productDtoList;
+    private List<ProductDto> productDtoList;
 
 }

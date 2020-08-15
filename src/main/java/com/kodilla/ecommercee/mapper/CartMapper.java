@@ -8,6 +8,7 @@ import com.kodilla.ecommercee.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,7 +29,7 @@ public class CartMapper {
                 cartDto.getPrice(),
                 userRepository.findById(cartDto.getUserDto()).orElse(null),
                 orderRepository.findById(cartDto.getOrderDto()).orElse(null),
-                mapToProductItemList(cartDto.getProductDtoList())
+                new ArrayList<>()
         );
     }
 
@@ -39,10 +40,20 @@ public class CartMapper {
                 cart.getPrice(),
                 cart.getUser().getId(),
                 cart.getOrder().getId(),
-                mapToProductItemDtoList(cart.getProductItems())
+                mapToProductDtoList(cart.getProductItems())
         );
     }
 
+    public List<ProductDto> mapToProductDtoList(List<ProductItem> productItems) {
+        return productItems.stream()
+                .map(product -> new ProductDto(
+                        product.getProduct().getId(),
+                        product.getProduct().getName(),
+                        product.getProduct().getDescription(),
+                        product.getProduct().getPrice(),
+                        product.getProduct().getGroup().getId()))
+                .collect(Collectors.toList());
+    }
     public List<ProductItemDto> mapToProductItemDtoList(List<ProductItem> productItems) {
         return productItems.stream()
                 .map(productItem -> new ProductItemDto(productItem.getId(), productItem.getQuantity()))

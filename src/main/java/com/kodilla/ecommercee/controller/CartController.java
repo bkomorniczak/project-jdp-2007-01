@@ -7,6 +7,7 @@ import com.kodilla.ecommercee.dto.CartDto;
 import com.kodilla.ecommercee.dto.OrderDto;
 import com.kodilla.ecommercee.dto.ProductDto;
 import com.kodilla.ecommercee.dto.ProductItemDto;
+import com.kodilla.ecommercee.exception.ProductNotFoundException;
 import com.kodilla.ecommercee.mapper.CartMapper;
 import com.kodilla.ecommercee.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,26 +24,26 @@ public class CartController {
     CartService cartService;
 
     @PostMapping(value = "createCart")
-    public Cart createCart(@RequestBody CartDto cartDto){
-        return cartService.saveCart(cartMapper.mapToCart(cartDto));
+    public void createCart(@RequestBody CartDto cartDto){
+         cartService.saveCart(cartMapper.mapToCart(cartDto));
 
     }
 
     @GetMapping(value = "getProducts")
-    public List<ProductItemDto> getProducts(@RequestParam Long cartId)  {
-        return cartMapper.mapToProductItemDtoList(cartService.getCartById(cartId).getProductItems());
+    public List<ProductDto> getProducts(@RequestParam Long cartId)  {
+        return cartMapper.mapToProductDtoList(cartService.getProductItems(cartId));
 
     }
 
     @PutMapping(value = "addProduct")
-    public void addProduct(@RequestParam Long cartId, @RequestParam Long productId) {
-        cartService.getCartById(cartId).addProductToCart(cartService.getProductById(productId));
+    public void addProduct(@RequestParam Long cartId, @RequestParam Long productId) throws ProductNotFoundException {
+        cartService.getCartById(cartId).addProductToCart(cartService.getProductById(productId).orElseThrow(ProductNotFoundException::new));
 
     }
 
     @DeleteMapping(value = "deleteProductFromCart")
-    public void deleteProductFromCart(@RequestParam Long cartId, @RequestParam Long productId) {
-        cartService.getCartById(cartId).removeProductToCart(cartService.getProductById(productId));
+    public void deleteProductFromCart(@RequestParam Long cartId, @RequestParam Long productId) throws ProductNotFoundException {
+        cartService.getCartById(cartId).removeProductToCart(cartService.getProductById(productId).orElseThrow(ProductNotFoundException::new));
 
     }
 

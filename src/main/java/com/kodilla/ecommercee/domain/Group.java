@@ -31,8 +31,14 @@ public class Group {
     public Group(String name) {
         this.name = name;
         this.productList = new ArrayList<>();
-
     }
+
+    public Group(Long id, String name)  {
+        this.id = id;
+        this.name = name;
+        this.productList = new ArrayList<>();
+    }
+
     public void setName(String name) {
         this.name = name;
     }
