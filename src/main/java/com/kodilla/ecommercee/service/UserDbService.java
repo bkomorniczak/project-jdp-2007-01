@@ -14,7 +14,7 @@ public class UserDbService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<User> getUser (final Long userId) {
+    public List<User> getUsers (final Long userId) {
         return userRepository.findAll();
     }
 
@@ -22,7 +22,7 @@ public class UserDbService {
         userRepository.deleteById(userId);
     }
 
-    public Optional <User> getUsers (final Long userId) {
+    public Optional <User> getUser (final Long userId) {
         return userRepository.findById(userId);
     }
 

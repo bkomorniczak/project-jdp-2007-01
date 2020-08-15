@@ -34,7 +34,7 @@ public class UserController {
 
     @PutMapping(value = "blockUserId")
     public void blockUserId (@RequestParam long userId){
-        Optional<User> optionalUser = userDbService.getUsers(userId);
+        Optional<User> optionalUser = userDbService.getUser(userId);
         if (optionalUser.isPresent()) {
             optionalUser.get().setStatus(User.STATUS_BLOCK);
         }
