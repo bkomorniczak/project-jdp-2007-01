@@ -24,10 +24,16 @@ public class User {
     private String username;
 
     @Column(name = "STATUS")
-    private int status;
+    private String status;
 
     @Column(name = "USERKEY")
     private Long userKey;
+
+    @Column(name = "USER_EMAIL")
+    private String userEmail;
+
+    @Column(name = "PASSWORD")
+    private String password;
 
     @OneToMany(
             targetEntity = Cart.class,
@@ -45,10 +51,12 @@ public class User {
     )
     private List<Order> orders;
 
-    public User(String username, int status, Long userKey) {
+    public User(String username, String status, Long userKey, String userEmail, String password) {
         this.username = username;
         this.status = status;
         this.userKey = userKey;
+        this.userEmail = userEmail;
+        this.password = password;
         this.carts = new ArrayList<>();
         this.orders = new ArrayList<>();
     }

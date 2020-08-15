@@ -25,7 +25,7 @@ public class UserEntityTestSuite {
     @Test
     public void testUserSave() {
         //Given
-        User user = new User(NAME, 1, 1111L);
+        User user = new User(NAME, "1", 1111L, "email", "password");
 
         //When
         userRepository.save(user);
@@ -42,7 +42,7 @@ public class UserEntityTestSuite {
     @Test
     public void testUserFindAll() {
         //Given
-        User user = new User(NAME, 1, 1L);
+        User user = new User(NAME, "1", 1L, "email", "password");
         userRepository.save(user);
 
         //When
