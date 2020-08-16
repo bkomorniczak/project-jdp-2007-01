@@ -6,7 +6,7 @@ import com.kodilla.ecommercee.dto.ProductDto;
 import com.kodilla.ecommercee.exception.CartNotFoundException;
 import com.kodilla.ecommercee.exception.ProductNotFoundException;
 import com.kodilla.ecommercee.mapper.CartMapper;
-import com.kodilla.ecommercee.service.CartService;
+import com.kodilla.ecommercee.service.CartDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +20,7 @@ public class CartController {
     @Autowired
     private CartMapper cartMapper;
     @Autowired
-    private CartService cartService;
+    private CartDbService cartService;
 
     @PostMapping(value = "createCart", consumes = APPLICATION_JSON_VALUE)
     public void createCart(@RequestBody CartDto cartDto){
@@ -29,7 +29,7 @@ public class CartController {
     }
 
     @GetMapping(value = "getProducts")
-    public List<ProductDto> getProducts(@RequestParam Long cartId)  {
+    public List<ProductDto> getProducts(@RequestParam Long cartId) throws CartNotFoundException {
         return cartMapper.mapToProductDtoList(cartService.getProductItems(cartId));
 
     }

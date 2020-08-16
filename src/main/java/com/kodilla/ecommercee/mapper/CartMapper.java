@@ -4,12 +4,14 @@ import com.kodilla.ecommercee.domain.*;
 import com.kodilla.ecommercee.dto.*;
 import com.kodilla.ecommercee.repository.GroupRepository;
 import com.kodilla.ecommercee.repository.OrderRepository;
+import com.kodilla.ecommercee.repository.ProductItemRepository;
 import com.kodilla.ecommercee.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -19,6 +21,8 @@ public class CartMapper {
     private UserRepository userRepository;
     @Autowired
     private  OrderRepository orderRepository;
+    @Autowired
+    private ProductItemRepository productItemRepository;
 
     public Cart mapToCart(CartDto cartDto) {
         return new Cart(
@@ -27,8 +31,12 @@ public class CartMapper {
                 cartDto.getPrice(),
                 userRepository.findById(cartDto.getUserId()).orElse(null),
                 orderRepository.findById(cartDto.getOrderId()).orElse(null),
-                new ArrayList<>()
-        );
+                cartDto.getProductDtoList().stream()
+                .map(productId -> productId.getId())
+                        .map(productItem -> productItemRepository.findById(productItem))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList()));
     }
 
     public CartDto mapToCartDto(Cart cart) {
