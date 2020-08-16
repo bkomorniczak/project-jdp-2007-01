@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -26,7 +27,7 @@ public class Product {
     private  String description;
 
     @Column(name = "PRICE", nullable = false)
-    private double price;
+    private BigDecimal price;
 
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "GROUP_ID")

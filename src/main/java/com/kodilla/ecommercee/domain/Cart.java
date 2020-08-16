@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,9 @@ public class Cart {
 
     @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column
+    private BigDecimal price;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "USER_ID")
@@ -56,4 +60,3 @@ public class Cart {
     }
 
 }
-
