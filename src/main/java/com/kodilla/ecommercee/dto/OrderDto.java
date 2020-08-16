@@ -12,5 +12,6 @@ import java.util.List;
 public class OrderDto {
     private Long id;
     private Long userId;
-    private List<ProductItemDto> productDtoList;
+    private List<Long> productItemsId;
+
 }

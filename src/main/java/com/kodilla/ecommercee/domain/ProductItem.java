@@ -38,4 +38,5 @@ public class ProductItem {
         this.id = id;
         this.quantity = quantity;
     }
+
 }

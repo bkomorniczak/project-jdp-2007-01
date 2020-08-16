@@ -4,16 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDto {
     private Long id;
     private String userName;
-    private int status;
+    private String userEmail;
+    private String userPassword;
+    private String status;
     private Long userKey;
-    private List<CartDto> cartDtoList;
-    private List<OrderDto> orderDtoList;
+
 }
