@@ -33,5 +33,4 @@ public class UserMapper {
                         t.getStatus(), t.getId()))
                 .collect(Collectors.toList());
     }
-
 }
