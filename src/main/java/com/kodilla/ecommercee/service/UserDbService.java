@@ -10,7 +10,6 @@ import java.util.Optional;
 
 @Component
 public class UserDbService {
-
     @Autowired
     private UserRepository userRepository;
 

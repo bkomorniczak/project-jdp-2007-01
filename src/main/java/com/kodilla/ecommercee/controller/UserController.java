@@ -8,15 +8,11 @@ import com.kodilla.ecommercee.mapper.UserMapper;
 import com.kodilla.ecommercee.service.UserDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.Random;
 
 @RestController
 @RequestMapping("/v1/user")
 public class UserController {
-
 
     @Autowired
     private UserMapper userMapper;

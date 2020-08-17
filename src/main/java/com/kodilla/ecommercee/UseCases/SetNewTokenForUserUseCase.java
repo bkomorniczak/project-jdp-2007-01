@@ -9,7 +9,6 @@ import java.util.Random;
 
 @Component
 public class SetNewTokenForUserUseCase {
-
     public UserExpiryTokenDto userExpiryTokenDto (UserDto userDto ) {
         Random random = new Random();
         UserExpiryTokenDto userExpiryTokenDto = new UserExpiryTokenDto();

@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+
 public class UserExpiryTokenDto {
     private long key;
     private LocalDateTime expiryDate;
