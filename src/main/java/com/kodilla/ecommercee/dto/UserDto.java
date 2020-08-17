@@ -17,4 +17,11 @@ public class UserDto {
     private String status;
     private Long userKey;
 
+    public UserDto(String userName, String userEmail, String userPassword, String status, Long userKey) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+        this.status = status;
+        this.userKey = userKey;
+    }
 }
