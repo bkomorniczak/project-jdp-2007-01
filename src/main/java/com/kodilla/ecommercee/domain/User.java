@@ -1,7 +1,9 @@
 package com.kodilla.ecommercee.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,9 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity(name = "USERS")
 public class User {
+
+    public static final String STATUS_ACTIVE = "ACTIVE";
+    public static final String STATUS_BLOCK = "BLOCK";
 
     @Id
     @GeneratedValue
@@ -21,7 +28,7 @@ public class User {
 
     @NotNull
     @Column(name = "USERNAME")
-    private String username;
+    private String userName;
 
     @Column(name = "STATUS")
     private String status;
@@ -29,8 +36,8 @@ public class User {
     @Column(name = "USERKEY")
     private Long userKey;
 
-    @Column(name = "USER_EMAIL")
-    private String userEmail;
+    @Column(name = "EMAIL")
+    private String email;
 
     @Column(name = "PASSWORD")
     private String password;
@@ -51,12 +58,12 @@ public class User {
     )
     private List<Order> orders;
 
-    public User(String username, String status, Long userKey, String userEmail, String password) {
-        this.username = username;
+    public User(String userName,String userEmail, String userPassword, String status, Long userKey) {
+        this.userName = userName;
         this.status = status;
         this.userKey = userKey;
-        this.userEmail = userEmail;
-        this.password = password;
+        this.email = userEmail;
+        this.password = userPassword;
         this.carts = new ArrayList<>();
         this.orders = new ArrayList<>();
     }
